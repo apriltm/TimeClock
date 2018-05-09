@@ -1,0 +1,95 @@
+<html>
+<head><title>Testing</title>
+<link rel="stylesheet" type="text/css" href="dynamic.css">
+<link rel="styleS" type="text/css" href="moonmap.css">
+</head>
+<body>
+<div class="ring-1"></div>
+<div class="ring-2"></div>
+<div id="display-num"></div>
+
+<div class="clock">
+<div class="box">
+<div class="line" style="border-right: 1px solid rgba(85, 131, 204, 0.7); height: 440px; top: -130px; left: 90px; position: absolute;"></div>
+<div class="line" style="border-bottom: 1px solid rgba(85, 131, 204, 0.7); width: 440px; top: 90px; left: -135px; position: absolute;"></div>
+
+
+<div class="orbit-center">
+
+<span class="moonSelector">12</span>
+<span class="moonSelector">1</span>
+<span class="moonSelector">2</span>
+<span class="moonSelector">3</span>
+<span class="moonSelector">4</span>
+<span class="moonSelector">5</span>
+<span class="moonSelector">6</span>
+<span class="moonSelector">7</span>
+<span class="moonSelector">8</span>
+<span class="moonSelector">9</span>
+<span class="moonSelector">10</span>
+<span class="moonSelector">11</span>
+</div></div>
+<div class="clockdot"></div>
+<div id="clockhrhand"></div>
+<div id="clockminhand"></div><div id="clocksechand"></div></div>
+
+	<fieldset id="dateinfo">
+	<legend>Today's Date
+	</legend><div id="addDate" style="font-size: 20px;"></div></fieldset>
+
+	<fieldset id="currenttodo">
+	<legend>To Do List
+	</legend><div id="addtodo" style="font-size: 20px;"></div></fieldset>
+
+	<fieldset id="currenttime">
+	<legend>Current Time
+	</legend><div id="addTime" style="font-size: 20px;"></div></fieldset>
+
+<!-- <svg height="440" width="440">
+  <circle cx="220" cy="220" r="190" id="clock" viewbox=" 0 0 440 440" />
+</svg> -->
+
+<script src="moonmap.js"></script>
+
+<script>
+var g = new Date();
+var now = g.toDateString();
+var d = g.getDate();
+var m = g.getMonth() +1;
+var y = g.getFullYear();
+document.getElementById("addDate").innerHTML = m + '/' + d + '/' + y + '<br/>' + now;
+
+function gettheTime(){
+var t = new Date().toLocaleTimeString();
+document.getElementById("addTime").innerHTML = t;
+}
+
+setInterval(gettheTime, 1000);
+
+var map = new MoonMap('.orbit-center', {
+  moonSelector: '.moonSelector',
+  radius: 235
+});
+
+	var clock = {
+		width: 440,
+		height: 440,
+		radius: 220,
+		secHand: document.getElementById("clocksechand"),
+		minHand: document.getElementById("clockminhand"),
+	};
+
+	function gettimehands(){
+		var secs = new Date().getSeconds();
+		var mins = new Date().getMinutes();
+		var hrs = new Date().getHours();
+		
+
+		clock.secHand = secs;
+		clock.minHand = mins;
+
+	}
+	</script>
+
+
+</body></html>
