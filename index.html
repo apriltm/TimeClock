@@ -39,11 +39,14 @@
 
 	<fieldset id="currenttodo">
 	<legend>To Do List
-	</legend><div id="addtodo" style="font-size: 20px;"></div></fieldset>
+	</legend><div id="addtodo" style="font-size: 20px;">Graduate<br><div class="bg"><br><br>Complete projects<br><div class="bg"></div><br>Eat<br><div class="bg"></div><br>Sleep<br><div class="bg"></div></div></div></fieldset>
 
 	<fieldset id="currenttime">
 	<legend>Current Time
 	</legend><div id="addTime" style="font-size: 20px;"></div></fieldset>
+
+	<fieldset id="playlist"><legend>PlayList
+	</legend><div id="addMusic" style="font-size: 20px;" onclick="playorpause()"><img src="./icons/play.png" align="left"><marquee id="info" behavior="scroll" direction="right">"Now playing..."</marquee></div></fieldset>
 
 <!-- <svg height="440" width="440">
   <circle cx="220" cy="220" r="190" id="clock" viewbox=" 0 0 440 440" />
@@ -52,12 +55,30 @@
 <script src="moonmap.js"></script>
 
 <script>
+var audio = new Audio('./playlist/Yiruma - River flows in you.mp3');
+
+
+	function playorpause(){
+	if (document.getElementById('addMusic').innerHTML == '<img src="./icons/play.png" align="left">'){
+			document.getElementById('addMusic').innerHTML = '<img src="./icons/pause.png" align="left">';
+			audio.play();
+			document.getElementById('info').innerHTML = 'Now playing...';
+		}
+	else{
+		document.getElementById('addMusic').innerHTML = '<img src="./icons/play.png" align="left">';
+		audio.pause();
+	}
+
+}
+
 var g = new Date();
 var now = g.toDateString();
 var d = g.getDate();
 var m = g.getMonth() +1;
 var y = g.getFullYear();
 document.getElementById("addDate").innerHTML = m + '/' + d + '/' + y + '<br/>' + now;
+
+
 
 function gettheTime(){
 var t = new Date().toLocaleTimeString();
